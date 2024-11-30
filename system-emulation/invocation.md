@@ -40,7 +40,17 @@ qemu-system-x86_64 [options] [disk_image]
 
 - Optionally, a suffix of “M” or “G” can be used to signify a value in megabytes or gigabytes respectively.
 
-### Block device options
+> ##### `-device driver[,prop[=value][,...]]`
+
+- Add device driver.
+
+- `prop=value` sets driver properties.
+
+- Valid properties depend on the driver.
+
+- To get help on possible drivers and properties, use `-device help` and `-device driver,help`.
+
+## Block device options
 
 - The QEMU block device handling options have a long history and have gone through several iterations as the feature set and complexity of the block layer have grown.
 
@@ -70,7 +80,43 @@ qemu-system-x86_64 [options] [disk_image]
 
 - Use file as SecureDigital card image.
 
-### Boot Image or Kernel specific
+## Display options
+
+> ##### `-nographic`
+
+- Normally, if QEMU is compiled with graphical window support, it displays output such as guest graphics, guest console, and the QEMU monitor in a window.
+
+- With this option, you can totally disable graphical output so that QEMU is a simple command line application.
+
+- The emulated serial port is redirected on the console and muxed with the monitor (unless redirected elsewhere explicitly).
+
+- Therefore, you can still use QEMU to debug a Linux kernel with a serial console.
+
+- Use C-a h for help on switching between the console and monitor.
+
+## Network options
+
+> ###### `-nic [tap|bridge|user|l2tpv3|vde|netmap|af-xdp|vhost-user|socket][,...][,mac=macaddr][,model=mn]`
+
+- This option is a shortcut for configuring both the on-board (default) guest NIC hardware and the host network backend in one go.
+
+- The host backend options are the same as with the corresponding `-netdev` options below.
+
+- The guest NIC model can be set with `model=modelname`.
+
+- Use `model=help` to list the available device types.
+
+> ##### `-netdev user,id=id[,option][,option][,...]`
+
+- Configure user mode host network backend which requires no administrator privilege to run.
+
+- Valid options are:
+
+    > ##### `id=id`
+
+    - Assign symbolic name for use in monitor commands.
+
+## Boot Image or Kernel specific
 
 - There are broadly 4 ways you can boot a system with QEMU.
 

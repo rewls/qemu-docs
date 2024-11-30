@@ -30,7 +30,7 @@
 
 ## Choosing a board model
 
-- For QEMU’s Arm system emulation, you must specify which board model you want to use with the `-M` or `--machine` option; there is no default.
+- For QEMU’s Arm system emulation, you must specify which board model you want to use with the `-M` or `-machine` option; there is no default.
 
 <br>
 
@@ -38,7 +38,7 @@
 
 <br>
 
-- If you already have a system image or a kernel that works on hardware and you want to boot with QEMU, check whether QEMU lists that machine in its -machine help output.
+- If you already have a system image or a kernel that works on hardware and you want to boot with QEMU, check whether QEMU lists that machine in its `-machine help` output.
 
 - If it is listed, then you can probably use that board model.
 
