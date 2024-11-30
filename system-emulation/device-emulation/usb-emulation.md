@@ -16,8 +16,10 @@
 
 - Network adapter that supports CDC ethernet and RNDIS protocols.
 
-- `id` specifies a netdev defined with -netdev …,id=id. For instance, user-mode networking can be used with
+- `id` specifies a netdev defined with `-netdev ...,id=id`.
 
-```sh
-$ qemu-system-x86_64 [...] -netdev user,id=net0 -device usb-net,netdev=net0
-```
+- For instance, user-mode networking can be used with
+
+    ```sh
+    $ qemu-system-x86_64 [...] -netdev user,id=net0 -device usb-net,netdev=net0
+    ```
