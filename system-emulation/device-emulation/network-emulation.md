@@ -44,3 +44,7 @@
     ```sh
     $ echo 100 100 > /proc/sys/net/ipv4/ping_group_range
     ```
+
+- When using the '`-netdev user,hostfwd=...`' option, TCP or UDP connections can be redirected from the host to the guest.
+
+- It allows for example to redirect X11, telnet or SSH connections.

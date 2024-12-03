@@ -116,6 +116,39 @@ qemu-system-x86_64 [options] [disk_image]
 
     - Assign symbolic name for use in monitor commands.
 
+    > ##### `hostfwd=[tcp|udp]:[hostaddr]:hostport-[guestaddr]:guestport`
+
+    - Redirect incoming TCP or UDP connections to the host port hostport to the guest IP address guestaddr on guest port guestport.
+
+    - If guestaddr is not specified, its value is x.x.x.15 (default first address given by the built-in DHCP server).
+
+    - By specifying hostaddr, the rule can be bound to a specific host interface.
+
+    - If no connection type is set, TCP is used.
+
+    - This option can be given multiple times.
+
+    <br>
+
+    - For example, to redirect host X11 connection from screen 1 to guest screen 0, use the following:
+
+    ```sh
+    # on the host
+    qemu-system-x86_64 -nic user,hostfwd=tcp:127.0.0.1:6001-:6000
+    # this host xterm should open in the guest X11 server
+    xterm -display :1
+    ```
+
+    - To redirect telnet connections from host port 5555 to telnet port on the guest, use the following:
+
+    ```sh
+    # on the host
+    qemu-system-x86_64 -nic user,hostfwd=tcp::5555-:23
+    telnet localhost 5555
+    ```
+
+    - Then when you use on the host `telnet localhost 5555`, you connect to the guest telnet server.
+
 ## Boot Image or Kernel specific
 
 - There are broadly 4 ways you can boot a system with QEMU.
